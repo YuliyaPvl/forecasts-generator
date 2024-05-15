@@ -13,3 +13,26 @@
 /* При генерации нового предсказания старое предсказание должно добавляться в начало списка «Мои предсказания» — .forecasts  */
 
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
+
+
+let predictionNumber = Math.floor(Math.random() * 5) + 1;
+let predictionText = "";
+let probability = Math.floor(Math.random() * 101);
+
+if (predictionNumber == 1) {
+  predictionText = "Сегодня будет отличный день!";
+} else if (predictionNumber == 2) {
+  predictionText = "Вас ждет приятный сюрприз!";
+} else if (predictionNumber == 3) {
+  predictionText = "Будьте осторожны, возможны неприятности.";
+} else if (predictionNumber == 4) {
+  predictionText = "Сегодня удачный день для новых начинаний.";
+} else {
+  predictionText = "Не стоит принимать важные решения сегодня.";
+}
+
+document.querySelector('.current-forecast h1').innerText = predictionText;
+document.querySelector('.current-forecast p').innerText = Вероятность события: ${probability}%;
+
+forecasts.unshift(predictionText);
+console.log(forecasts);
