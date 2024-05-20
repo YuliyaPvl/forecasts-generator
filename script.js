@@ -15,24 +15,29 @@
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
 
 
-let predictionNumber = Math.floor(Math.random() * 5) + 1;
+const predictionNumber = Math.floor(Math.random() * 5) + 1;
 let predictionText = "";
-let probability = Math.floor(Math.random() * 101);
+const probability = Math.floor(Math.random() * 101);
 
-if (predictionNumber == 1) {
+if (predictionNumber === 1) {
   predictionText = "Сегодня будет отличный день!";
-} else if (predictionNumber == 2) {
+} else if (predictionNumber === 2) {
   predictionText = "Вас ждет приятный сюрприз!";
-} else if (predictionNumber == 3) {
+} else if (predictionNumber === 3) {
   predictionText = "Будьте осторожны, возможны неприятности.";
-} else if (predictionNumber == 4) {
+} else if (predictionNumber === 4) {
   predictionText = "Сегодня удачный день для новых начинаний.";
 } else {
   predictionText = "Не стоит принимать важные решения сегодня.";
 }
 
 document.querySelector('.current-forecast h1').innerText = predictionText;
-document.querySelector('.current-forecast p').innerText = Вероятность события: ${probability}%;
+document.querySelector('.current-forecast p').innerText = `Вероятность события: ${probability}%`;
 
-forecasts.unshift(predictionText);
-console.log(forecasts);
+const forecastItemTemplate = document.getElementById('forecast-item');
+const newForecastItem = document.importNode(forecastItemTemplate.content, true);
+newForecastItem.querySelector('h3').innerText = predictionText;
+newForecastItem.querySelector('p').innerText = `Вероятность события: ${probability}%`;
+
+const forecastsContainer = document.querySelector('.forecasts');
+forecastsContainer.prepend(newForecastItem);
