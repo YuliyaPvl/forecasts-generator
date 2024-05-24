@@ -15,6 +15,9 @@
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
 
 
+const forecastBtn = document.querySelector('.forecast-btn');
+
+forecastBtn.addEventListener('click',()=>{
 const predictionNumber = Math.floor(Math.random() * 5) + 1;
 let predictionText = "";
 const probability = Math.floor(Math.random() * 101);
@@ -41,3 +44,4 @@ newForecastItem.querySelector('p').innerText = `Вероятность собы�
 
 const forecastsContainer = document.querySelector('.forecasts');
 forecastsContainer.prepend(newForecastItem);
+});
